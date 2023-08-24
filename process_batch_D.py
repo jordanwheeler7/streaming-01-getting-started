@@ -26,23 +26,23 @@ logging.basicConfig(
 
 # Declare program constants
 
-INPUT_FILE_NAME = "batchfile_2_kelvin.csv"
-OUTPUT_FILE_NAME = "batchfile_3_farenheit.csv"
+INPUT_FILE_NAME = "batchfile_3_farenheit.csv"
+OUTPUT_FILE_NAME = "batchfile_4_rankine.csv"
 
 # Define program functions (bits of reusable code)
 # Use docstrings - and indentation matters!
 
 
-def convert_k_to_f(temp_k):
+def convert_f_to_r(temp_f):
     """Convert to Kelvin to Farenheit.
     Use the built-in round() function to round to 2 decimal places
     Use the built-in float() function to convert the string to a float (a floating point number)
     All CSV values are read as strings.
     """
-    logging.debug(f"Calling convert_k_to_f() with {temp_k}.")
-    farenheit = round((float(temp_k)- 273.15) * 9 / 5 + 32, 2)
-    logging.debug(f"Converted {temp_k}K to {farenheit}F.")
-    return farenheit
+    logging.debug(f"Calling convert_f_to_r() with {temp_f}.")
+    rankine = round((float(temp_f)+ 459.67), 2)
+    logging.debug(f"Converted {temp_f}K to {rankine}R.")
+    return rankine
 
 
 def process_rows(input_file_name, output_file_name):
@@ -68,19 +68,19 @@ def process_rows(input_file_name, output_file_name):
             writer = csv.writer(output_file, delimiter=",")
 
             # Write the header row to the output file
-            writer.writerow(["Year", "Month", "Day", "Time", "TempF"])
+            writer.writerow(["Year", "Month", "Day", "Time", "TempR"])
 
             # For each data row in the reader
             for row in reader:
                 # Extract the values from the input row into named variables
-                Year, Month, Day, Time, TempK = row
+                Year, Month, Day, Time, TempF = row
 
                 # Call the conversion function, passing in the TempC argument
                 # Assign the return value to a new variable named TempK
-                TempF = convert_k_to_f(TempK) 
+                TempR = convert_f_to_r(TempF) 
 
                 # Write the transformed data to the output file
-                writer.writerow([Year, Month, Day, Time, TempF])
+                writer.writerow([Year, Month, Day, Time, TempR])
 
 
 

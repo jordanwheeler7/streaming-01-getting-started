@@ -1,10 +1,19 @@
 # streaming-01-getting-started
 
+* Jordan Wheeler
+* Module 1
+* CSIS 44671- Streaming Data
+* August 23, 2023
+
 > Get started with Python for streaming analytics
 
 Set yourself up for productivity and collaboration.
 We assume no prior programming experience and that you want to 
 get productive as quickly as possible.
+
+## Formulas Used
+* Kelvin to Farenheit = (Kelvin - 273.15) x 9/5 + 32
+* Farenheit to Rankine = Farenheit + 459.67
 
 ## Prerequisites
 
